@@ -32,10 +32,6 @@ _This is an automatically generated page._
 
 
 def render(template_name, data):
-    # filename = os.path.join(os.path.dirname(__file__), 'templates', template_name)
-    # if not os.path.exists(filename):
-    #     raise Exception('Template %s not found.' % template_name)
-    logging.info(data)
     template = environment.get_template(template_name)
     if 'user' not in data:
         data['user'] = model.WikiUser.get_or_create(users.get_current_user())
@@ -125,7 +121,6 @@ def list_pages_feed(pages):
 
 
 def show_page_history(page, user=None, is_admin=False):
-    logging.info(page)
     return render('history.html', {
         'page' : page,
         'page_title': page.title,
